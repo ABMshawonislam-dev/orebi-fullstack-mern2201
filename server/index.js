@@ -1,8 +1,15 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
+const dbConnection = require("./config/dbConfig.js")
+const routes = require("./routes")
 
-app.get('/', function (req, res) {
-    res.send('Hello MERN')
-})
+
+// Database Connection
+dbConnection()
+
+// middleware
+app.use(express.json())
+app.use(routes)
 
 app.listen(8000)
