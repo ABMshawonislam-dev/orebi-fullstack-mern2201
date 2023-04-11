@@ -7,7 +7,9 @@ const InputBox = (props) => {
         {props.title}
       </h4>
       <props.as
+        onChange={props.onChange}
         placeholder={props.placeholder}
+        name={props.name}
         className="w-full resize-none border-b border-solid border-[#F0F0F0] pb-2.5 outline-0"
       />
     </div>
