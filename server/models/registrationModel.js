@@ -18,7 +18,7 @@ const  registrationSchema = new Schema({
     },
     telephone: {
         type: String,
-        required: true
+        // required: true
     },
     addressOne: {
         type: String,
