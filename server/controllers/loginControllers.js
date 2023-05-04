@@ -21,19 +21,24 @@ async function loginControllers(req, res) {
     if(existingEmail.length > 0){
 
         bcrypt.compare(password, existingEmail[0].password, function(err, result) {
-            // result == true
+   
             if(result){
                 res.json({
                     "success": "Login Successful",
                     "firstName": existingEmail[0].firstName,
                     "lastName": existingEmail[0].lastName
                 })
+            }else{
+
+                res.send({"error": "Credential not match"}) 
             }
         });
         
+    }else{
+        res.send({"error": "Credential not match"}) 
+
     }
 
-     res.send({"error": "Credential not match"}) 
 
     
 }

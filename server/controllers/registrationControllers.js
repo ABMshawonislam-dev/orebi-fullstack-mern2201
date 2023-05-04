@@ -15,7 +15,8 @@ async function registrationControllers(req, res) {
         postCode,
         country,
         state,
-        password 
+        password,
+        randomOtp 
     } = req.body
 
     if(!nameValidation(firstName)){

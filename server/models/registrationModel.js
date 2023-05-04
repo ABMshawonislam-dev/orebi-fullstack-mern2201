@@ -41,6 +41,10 @@ const  registrationSchema = new Schema({
     password:{
         type: String,
         required: true
+    },
+    randomOtp:{
+        type: String,
+        default: null
     }
 
 
