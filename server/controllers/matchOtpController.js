@@ -2,7 +2,6 @@ const User = require("../models/registrationModel.js")
 
 async function matchOtpController(req,res){
     const {otp,email} = req.body
-    console.log(otp)
 
     const existingOtp = await User.find({email})
 
