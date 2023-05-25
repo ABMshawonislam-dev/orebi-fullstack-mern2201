@@ -45,7 +45,9 @@ const  registrationSchema = new Schema({
     randomOtp:{
         type: String,
         default: null
-    }
+    },
+   
+    
 
 
 })
