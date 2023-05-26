@@ -33,8 +33,6 @@ async function registrationControllers(req, res) {
 
   let existingEmail = await User.find({ email });
 
-  console.log(existingEmail);
-
   if (existingEmail.length > 0) {
     return res.send({ error: "Email alreafy exixts" });
   }
