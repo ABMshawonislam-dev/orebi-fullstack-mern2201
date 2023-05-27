@@ -21,6 +21,7 @@ const affiliateSchema = new Schema({
   status: {
     type: String,
     default: "waiting",
+    enum: ["approved", "rejected", "waiting"],
   },
 });
 module.exports = mongoose.module("Affiliates", affiliateSchema);
