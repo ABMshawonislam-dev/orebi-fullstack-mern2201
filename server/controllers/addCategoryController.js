@@ -1,6 +1,6 @@
 const Category = require("../models/categoryModel.js")
 
-async function categoryController(req, res) {
+async function addCategoryController(req, res) {
     const { title, description, discount, status } = req.body
     try {
         if (!title || !description) {
@@ -25,4 +25,4 @@ async function categoryController(req, res) {
         return res.status(500).json({ message: "Server Error" })
     }
 }
-module.exports = categoryController
+module.exports = addCategoryController
