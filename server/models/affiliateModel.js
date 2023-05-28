@@ -11,7 +11,7 @@ const affiliateSchema = new Schema({
     required: true,
     unique: true,
   },
-  telephone: {
+  phone: {
     type: String,
   },
   voterID: {
@@ -21,7 +21,7 @@ const affiliateSchema = new Schema({
   status: {
     type: String,
     default: "waiting",
-    enum: ["approved", "rejected", "waiting"],
+    enum: ["approved", "rejected"],
   },
 });
-module.exports = mongoose.module("Affiliates", affiliateSchema);
+module.exports = mongoose.model("Affiliates", affiliateSchema);
