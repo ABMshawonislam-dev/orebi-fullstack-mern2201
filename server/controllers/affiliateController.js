@@ -1,17 +1,12 @@
 const emailValidation = require("../helpers/emailValidation.js");
 const nameValidation = require("../helpers/nameValidation.js");
-const voterIdValidation= require("../helpers/voterIdValidation.js");
-const User = require("../models/affiliateModel.js");
+const voterIdValidation = require("../helpers/voterIdValidation.js");
+
+const AffiliatesUser = require("../models/affiliateModel.js");
+const User = require("../models/registrationModel.js");
 
 async function affiliateController(req, res) {
-  const {
-    name,
-    email,
-    phone,
-    voterId
-  } = req.body;
-
-  console.log(req.body);
+  const { name, email, phone, voterId } = req.body;
   if (!nameValidation(name)) {
     return res.send({ error: "Name is required and number not allow" });
   }
@@ -20,29 +15,30 @@ async function affiliateController(req, res) {
     return res.send({ error: "Valid Email Required" });
   }
   if (!voterIdValidation(voterId)) {
-    return res.send({ error: "Name is required and number not allow" });
+    return res.send({ error: "Number is required and alphabet not allow" });
   }
 
   let existingEmail = await User.find({ email });
 
-  if (existingEmail.length > 0) {
-    return res.send({ error: "Email alreafy exixts" });
-  }
+    if (existingEmail.length <= 0) {
+      return res.send({ error: "Email not Found" });
+    }
+  let userData = new AffiliatesUser({
+    name,
+    email,
+    phone,
+    voterId,
+  });
+  userData.save();
 
-    let userData = new User({
-        name,
-        email,
-        phone,
-        voterId
-    });
+  //   let verifyStatus = await AffiliatesUser.findOneAndUpdate({ email }, { $set: { status: "approved" } }, { new: true });
 
-    userData.save();
+  res.json({success: "Registration Successful. You are Affiliate now"});
 
-    res.json({
-      success: "Registration Successful. You are Affiliate now",
-      name: userData.name,
-      email: userData.email,
-    });
+//  for test
+  let fromMongodb = await AffiliatesUser.find({});
+  console.log(fromMongodb);
+
 }
 
 module.exports = affiliateController;

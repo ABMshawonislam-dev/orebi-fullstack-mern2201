@@ -14,14 +14,14 @@ const affiliateSchema = new Schema({
   phone: {
     type: String,
   },
-  voterID: {
+  voterId: {
     type: String,
     required: true,
   },
   status: {
     type: String,
     default: "waiting",
-    enum: ["approved", "rejected"],
+    enum: ["approved", "rejected", "waiting"],
   },
 });
 module.exports = mongoose.model("Affiliates", affiliateSchema);

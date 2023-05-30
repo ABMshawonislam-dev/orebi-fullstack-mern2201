@@ -1,18 +1,16 @@
-function voterIdValidation (voterId) {
-    
-    if(!voterId){
-        return false
-    } 
+function voterIdValidation(voterId) {
+  if (!voterId) {
+    return false;
+  }
 
-    let pattern = /^[a-zA-Z]+$/ig;
-    let result = pattern.test(voterId);
+  let pattern = /^[0-9]+$/gi;
+  let result = pattern.test(voterId);
 
-    if(!result){
-        return false
-    }
+  if (!result) {
+    return false;
+  }
 
-    return true
-   
+  return true;
 }
 
-module.exports = voterIdValidation
+module.exports = voterIdValidation;
